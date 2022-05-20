@@ -54,11 +54,14 @@ const app = new Vue({
         this.nextImage();
       }, 3000);
     },
+    stopAutoplay() {
+      clearInterval(this.autoplayId);
+    },
   },
   mounted() {
     this.autoplay();
   },
   beforeDestroy() {
-    clearInterval(this.autoplayId);
+    this.stopAutoplay();
   },
 });

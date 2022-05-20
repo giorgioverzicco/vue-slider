@@ -12,18 +12,18 @@
   <div id="app">
 
     <div class="container">
-      <div class="items">
 
-        <div class="item active">
+      <div class="items">
+        <div class="item active" @mouseover="stopAutoplay" @mouseleave="autoplay">
           <img :src="images[currentIndex].src" alt="">
           <div class="text">
             <h3>{{ images[currentIndex].title }}</h3>
             <p>{{ images[currentIndex].text }}</p>
           </div>
         </div>
-
       </div>
-      <div class="thumbs">
+
+      <div class="thumbs" @mouseover="stopAutoplay" @mouseleave="autoplay">
         <div class="prev" @click="prevImage"></div>
 
         <div class="thumb active" v-for="(image, i) in images" @click="selectImage(i)">
@@ -32,6 +32,7 @@
 
         <div class="next" @click="nextImage"></div>
       </div>
+
     </div>
 
   </div>
