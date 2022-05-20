@@ -1,6 +1,7 @@
 const app = new Vue({
   el: "#app",
   data: {
+    autoplayId: null,
     currentIndex: 0,
     images: [
       {
@@ -48,5 +49,16 @@ const app = new Vue({
     selectImage(index) {
       this.currentIndex = index;
     },
+    autoplay() {
+      this.autoplayId = setInterval(() => {
+        this.nextImage();
+      }, 3000);
+    },
+  },
+  mounted() {
+    this.autoplay();
+  },
+  beforeDestroy() {
+    clearInterval(this.autoplayId);
   },
 });
